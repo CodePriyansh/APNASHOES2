@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>add-product</title>
+        <link rel="stylesheet"  href="/css/admin-style/home.css">
+    <link rel="stylesheet" href="/BOOTSTRAP/bootstrap.min.css">
+
+        <%- include('../partial/bootstrap.ejs')%>
+
+    </head>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+      display:flex;
+      justify-content:center;
+   }
+   header img{
+       height:43px;
+       margin-left: 7px;
+       color: #E60000;
+
+   }
+         .tagName{
+          text-align:center;
+          color: #E60000;
+          text-decoration: underline;
+          
+       }
+       .tagName span{
+           font-size: 25px;
+           margin-right: 5px;
+
+       }
+     
+       .card{
+            box-shadow: 0px 0px 10px 0px #E60000;
+           align-items:center;
+           height:550px;
+           min-width: 50px;
+           max-width:400px;
+           margin-left:40px;
+           /* padding:50px; */
+
+       }
+       .card img{
+           min-width:50px;
+           max-width:250px;
+       }
+
+       .card-title{
+           font-size: 19px;
+           color:#E60000;
+           font-weight:bold;
+           border-bottom:1px dotted #E60000;
+       }
+
+       .card-link{
+           line-height:20px;
+           color:#E60000;
+           font-size: 18px;
+           padding:5px;
+       }
+       .card-link:hover{
+          background-color: #E60000;
+          color:rgb(255, 255, 255);
+
+       }
+       /* header h1{
+           
+       } */
+       header{
+           /* text-align: center; */
+           /* display: inline-block; */
+           display: flex;
+           justify-content: center;
+       }
+       header img{
+           display: inline-block;
+           margin-top: 15px;
+       }
+       /* header span{
+              
+       } */
+
+       .modal-2{
+           height:400px;
+       }
+       input{
+           width: 600px;
+       }
+       </style>
+    <body>
+
+        <h2 style="text-align: center;">Edit Product</h2>
+      <div class="container-fluid" style="display: flex; justify-content: flex-start; height: 80vh; ">
+        <%- include('../partial/admin-sidebar.ejs')%>
+
+        <form  style="margin-left: 100px; border: 2px double #d18787; padding: 20px;     box-shadow: 0px 0px 10px 0px #e60000;" action="/product/add-product" method="POST" enctype="multipart/form-data">
+        
+          <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" name="productName" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" name="productPrice" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" name="productQty" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="productDescription" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Upload Images (All views)</label>
+            <br><input type="file" name="productImages" multiple/>
+        </div>
+        <div class="group">
+            <button class="btn btn-primary" type="submit" style="background-color: #E60000;">Add Product</button>
+        </div>
+        </form>
+      </div>
+    </body>
+
+</html>

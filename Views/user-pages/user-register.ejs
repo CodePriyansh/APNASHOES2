@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+background-color:rgb(245, 245, 245);}
+* {box-sizing: border-box;}
+
+
+.main{
+    padding:35px;
+    border:1px solid gray;
+    margin:auto;
+    margin-top:200px;
+    max-width: 600px;
+    align-items:center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgb(190, 3, 3);
+}
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+
+}
+
+.icon {
+  padding: 10px;
+  background: #E60000;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 10px;
+  border-radius: 10px;
+  margin-right: 15px;
+
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+
+}
+
+.input-field:focus {
+  border: 2px solid #E60000;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #E60000;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 5px;
+  font-size:18px;
+  margin-left: 150px;
+}
+.btn2 {
+  margin-left: 150px;
+
+  background-color: #156329;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 5px;
+  font-size:18px
+
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<form action="#" class="main">
+  <h2>Register Form</h2>
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="usrnm">
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email">
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="psw">
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-mobile icon"></i>
+    <input class="input-field" type="number" placeholder="Mobile" name="psw">
+  </div>
+
+  <button type="submit" class="btn">Register</button>
+   
+  <h3 style="color:rgb(3, 3, 145);">OR already A user then click on Go to Login</h3>
+  <a href="/userLogin" class="btn2">go to Login</a>
+</form>
+
+</body>
+</html>

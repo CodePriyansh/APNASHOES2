@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/BOOTSTRAP/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin-style/home.css">
+    <%- include('../partial/bootstrap.ejs') %>
+
+    
+     <style>
+          header{
+        display:flex;
+        justify-content:center;
+     }
+     header img{
+         height:43px;
+         margin-left: 7px;
+         color: #E60000;
+
+     }
+           .tagName{
+            text-align:center;
+            color: #E60000;
+            border: 1px solid #E60000;
+            padding: 5px;
+            
+         }
+         
+       
+         .card{
+              box-shadow: 0px 0px 10px 0px #E60000;
+             align-items:center;
+             height:550px;
+             min-width: 50px;
+             max-width:400px;
+             margin-left:40px;
+             /* padding:50px; */
+
+         }
+         .card img{
+             min-width:50px;
+             max-width:250px;
+         }
+
+         .card-title{
+             font-size: 19px;
+             color:#E60000;
+             font-weight:bold;
+             border-bottom:1px dotted #E60000;
+         }
+
+         .card-link{
+             line-height:20px;
+             color:#E60000;
+             font-size: 18px;
+             padding:5px;
+         }
+         .card-link:hover{
+            background-color: #E60000;
+            color:rgb(255, 255, 255);
+
+         }
+         /* header h1{
+             
+         } */
+         header{
+             /* text-align: center; */
+             /* display: inline-block; */
+             display: flex;
+             justify-content: center;
+         }
+         header img{
+             display: inline-block;
+             margin-top: 15px;
+         }
+         /* header span{
+                
+         } */
+
+         .modal-2{
+             height:400px;
+         }
+     </style>
+      
+</head>
+
+<body>
+     <header> <h2 class="tagName"> APNA SHOES</h2><img src="/images/admin-img/icons8-boots-50.png" >
+      
+        </header>
+   
+    <div class="container-fluid">
+        <div class="sidebar"></div>
+        <%- include('../partial/admin-sidebar.ejs') %>
+        <!-- <div class="card" style="width:280px" >
+            <img src="/images/admin-img/business-growth-chart-3073.png" target="_blank" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Product orders</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">grow 20% this Year</li>
+              <li class="list-group-item">grow 30% this Month</li>
+              <li class="list-group-item">grow 60% this Week</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Check Now</a>
+            </div>
+          </div>
+
+          
+          <div class="card" style="width:280px" >
+            <img src="/images/admin-img/business-growth-chart-3073.png" target="_blank" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">New Users Gain</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">grow 20% this Year</li>
+                <li class="list-group-item">grow 30% this Month</li>
+                <li class="list-group-item">grow 60% this Week</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Check Now</a>
+            </div>
+          </div>
+
+
+          <div class="card" style="width:280px" >
+            <img src="/images/admin-img/business-growth-chart-3073.png" target="_blank" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Registerd USer</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">grow 20% this Year</li>
+                <li class="list-group-item">grow 30% this Month</li>
+                <li class="list-group-item">grow 60% this Week</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Check Now</a>
+            </div>
+          </div>
+    </div> -->
+    
+
+   
+</body>
+
+</html>

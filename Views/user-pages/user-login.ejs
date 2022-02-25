@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/css/admin-style/login.css">
+  <style>
+      .btn3{
+          font-size: 13px;
+          width: 100px;
+          height: 20px;
+          margin-left: 313px;
+          border-radius: 3px;
+          background-color: rgb(241, 241, 248);
+      }
+
+      .btns{
+          width: 100px;
+          height: 50px;
+          padding-bottom:10px;
+      }
+
+   
+  </style>
+</head>
+<body>
+    <a href="/" style="text-align: center;"><h3 >HOME</h3></a>
+  <div id="login-form-wrap" style="height: 500px; margin-top:50px;">
+    <h2>User Login</h2>
+    <form action="/userLogin" id="login-form" method="get">
+      <p>
+        <input type="email" id="email" name="email" placeholder="email" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input type="password" id="password" name="password" placeholder="password" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input class="btns" type="submit" id="login" value="Login" placeholder="Log In">
+      </p>
+      <p style="font-size: 17px;">
+        <a  href="/user-register">if you dint have account? <span style="color: green;">Create Account</span></a>
+      </p>
+    </form>
+  
+  </div>
+
+ 
+
+</body>
+
+</html>
