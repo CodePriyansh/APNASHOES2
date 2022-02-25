@@ -28,7 +28,7 @@ module.exports = class Category {
     return new Promise((resolve,reject)=>{
       pool.getConnection((err,con)=>{
         if(!err){
-          let sql = "select name,imagename from category";
+          let sql = "select * from category";
           con.query(sql,(err,results)=>{
             err ? reject(err) : resolve(results);
             con.release();

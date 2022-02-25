@@ -1,8 +1,11 @@
+
+
 <html>
     <head>
         <title>add-product</title>
         <link rel="stylesheet"  href="/css/admin-style/home.css">
     <link rel="stylesheet" href="/BOOTSTRAP/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <%- include('../partial/bootstrap.ejs')%>
 
@@ -126,35 +129,63 @@ h4 {
       <div class="container-fluid" style="display: flex; justify-content: flex-start; height: 80vh; ">
         <%- include('../partial/admin-sidebar.ejs')%>
         
+
+        
         <div class="container">
             <div class="row">
               <div class="col-12">
                   <table class="table table-image">
                     <thead>
                       <tr>
-                        <th scope="col">S .No</th>
-                        <th scope="col">IMAGE</th>
-                        <th scope="col">PRODUCT NAME</th>
-                        <th scope="col">DESCRIPTION</th>
-                        <th scope="col">QUATITY</th>
-                        <th scope="col">PRICE</th>
+                        <th >S .No</th>
+                        <th >IMAGE</th>
+                        <th >PRODUCT NAME</th>
+                        <th >DESCRIPTION</th>
+                        <th >QUATITY</th>
+                        <th >PRICE</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
+                        <%
+                        let sno = 1;
+                        for (product of productList)
+                        {
+                        %>
+                      <tr id="row<%=product.id%>">
+                        <td><%=sno++%></td>
                         <td class="w-25">
-                            <img src="/Images\admin-img\nike4.jpg" style="height: 220px; width: 220px;" class="img-fluid img-thumbnail" alt="Sheep">
+                            <img src="/Images/<%=product.frontViewImage%>" style="height: 220px; width: 220px;" class="img-fluid img-thumbnail" alt="Sheep">
                         </td>
-                        <td>Jordan<br>
-                            <a href="/admin/edit-product"><button class="btn btn-success mt-5" > EDIT product</button></a></td>
-                        <td>Best Trending Shoe<br>
-                        <a><button class="btn btn-danger mt-5" href="/remove-product"> remove product</button></a></td>
-                        <td>10</td>
-                        <td>2500</td>
+                        <td><%=product.name%></td>
+                        <td><%=product.description%></td>
+                        <td><%=product.quantity%></td>
+                        <td><%=product.price%></td>
+                           <td><a href="/product/edit-product/<%=product.id%>"><button class="btn btn-success mt-5" > EDIT product</button></a></td>
+                       
+                       <td> <a><button onclick="deleteproduct('<%=product.id%>')" id="delete-button" class="btn btn-danger"> remove product</button></a></td>
+                        
                       </tr>
+                      <%}%>
                      
                     </tbody>
+                    <script>
+                        function deleteproduct(product_id){
+                          console.log("delet btn");
+
+                          if(confirm('Are you sure ?')){  
+                              $.ajax({
+                                  url: '/product/delete-product/'+product_id,
+                                  success: function(result){
+                                  $('#row'+product_id).remove();
+                                  }
+                              });
+                          }
+                          console.log('/product/delete-product/'+product_id);
+
+                        }
+                    </script>
                   </table>   
               </div>
             </div>
@@ -164,3 +195,5 @@ h4 {
     </body>
 
 </html>
+
+

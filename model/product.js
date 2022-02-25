@@ -63,8 +63,8 @@ module.exports = class product{
         return new Promise((resolve,reject)=>{
           pool.getConnection((err,con)=>{
             if(!err){
-                let sql = "update product set name=?,price=?,quantity=? where id=?";
-              con.query(sql,[this.name,this.price*1,this.quantity*1,id],(err,result)=>{
+                let sql = "update product set name=?,price=?,quantity=?,description=? where id=?";
+              con.query(sql,[this.name,this.price*1,this.quantity*1,this.description,id],(err,result)=>{
                 err ? reject(err) : resolve(result);
                 con.release();
               });
@@ -107,8 +107,8 @@ module.exports = class product{
     });        
   });
  }
- update(){
-     
- }
+ 
+
+ 
 
 }
