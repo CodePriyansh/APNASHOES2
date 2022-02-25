@@ -72,6 +72,10 @@ exports.viewProductList = (req, res) => {
 exports.editProduct = (req, res) => {
   res.render("../Views/Admin-Pages/edit-product.ejs");
 };
+
+exports.adminHomePage = (req, res) => {
+  res.render("./Admin-Pages/admin-home.ejs");
+};
 exports.signout = (request, response, next) => {
   request.session.current_user = null;
   request.session.destroy();
