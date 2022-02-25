@@ -1,40 +1,40 @@
 <nav>
     <ul class="mcd-menu">
         <li>
-            <a href="/admin/home">
+            <a href="/admin" data-target="#myModal">
                 <i class="fa fa-home"></i>
                 <strong>Home</strong>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="#" data-target="#myModal">
                 <i class="fa fa-comments-o"></i>
                 <strong>Category</strong>
             </a>
             <ul>
-                <li data-toggle="modal" data-target="#myModal"><a href="#" ></i>Add Category</a></li>
-              
-                <li><a href="/admin/view-category">View Category</a></li>
+                <li data-toggle="modal" data-target="#myModal"><a href="#"></i>Add Category</a></li>
+
+                <li><a href="/category/view-category">View Category</a></li>
 
 
             </ul>
         </li>
 
         <li>
-            <a href="">
+            <a href="#" data-target="#myModal">
                 <i class="fa fa-comments-o"></i>
                 <strong>Manage Products</strong>
             </a>
             <ul>
-                <li ><a href="/admin/add-product">Add Products</a></li>
-               
+                <li><a href="/admin/add-product">Add Products</a></li>
+
                 <li data-toggle="modal" data-target="#myModal2"><a href="#">Product List</a></li>
 
             </ul>
         </li>
 
         <li>
-            <a href="">
+            <a href="#" data-target="#myModal">
                 <i class="fa fa-comments-o"></i>
                 <strong>User Details</strong>
             </a>
@@ -48,7 +48,7 @@
         </li>
 
         <li>
-            <a href="">
+            <a href="#" data-target="#myModal">
                 <i class="fa fa-comments-o"></i>
                 <strong>Manage Orders</strong>
             </a>
@@ -56,77 +56,70 @@
                 <li><a href="#"></i>Ordered Products</a></li>
             </ul>
         </li>
+        <li><a href="/admin/signout" style="font-weight: bold;">SIGN OUT</a></li>
 
-        <li>
-            <a href="#"><strong> SIGN OUT</strong></a>
-        </li>
     </ul>
 </nav>
 
 <div class="modal fade" id="myModal2">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content ">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title " >Select Category</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form action="/admin/product-list" method="get" enctype="multipart/form-data">
-             
-              <select name="categoryId" class="form-control" style="margin: 15px 0;">
-                <option value="0">select category</option>
-                    
-                <option value="1">MENS</option>
-                <option value="2">Womens</option>
-                <option value="3"> KIDS</option>
-                <option value="4">NEW ARRIVAL</option>
+        <div class="modal-content ">
 
-            </select>
-              <div class="form-group">
-                  <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button class="btn btn-secondary" type="submit">SEE</button>
-              </div>
-          </form>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title ">Select Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/admin/product-list" method="post" enctype="multipart/form-data">
+
+                    <select name="categoryId" class="form-control" style="margin: 15px 0;">
+                        <option value="0">select category</option>
+
+                        <option value="1">MENS</option>
+                        <option value="2">Womens</option>
+                        <option value="3"> KIDS</option>
+                        <option value="4">NEW ARRIVAL</option>
+
+                    </select>
+                    <div class="form-group">
+                        <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary" type="submit">SEE</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-
-
-
-
-  <div class="modal fade" id="myModal">
+</div>
+<div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content ">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title " >Add Category</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content ">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title ">Add Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/category/add" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input type="text" name="categoryName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Category Image</label>
+                        <input type="file" name="categoryImage" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form action="/category/add" method="POST" enctype="multipart/form-data">
-              <div class="form-group">
-                  <label>Category Name</label>
-                  <input type="text" name="categoryName" class="form-control"/>
-              </div>
-              <div class="form-group">
-                  <label>Category Image</label>
-                  <input type="file" name="categoryImage"/>
-              </div>
-              <div class="form-group">
-                  <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button class="btn btn-secondary" type="submit">Add</button>
-              </div>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
- 
+</div>
