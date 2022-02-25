@@ -1,0 +1,1 @@
+const control = require('../controller/product.ctrl'); 

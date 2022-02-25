@@ -107,5 +107,8 @@ module.exports = class product{
     });        
   });
  }
+ update(){
+     
+ }
 
 }

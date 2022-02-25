@@ -3,7 +3,9 @@
  const adminRoute = require('./routes/admin.route')
  const userRoute = require('./routes/user.route')
  const cartRoute = require('./routes/cart.route')
+ const productRoute= require('./routes/product.route')
  const bodyParser = require('body-parser'); 
+
  const path = require('path');
 
   app.set('view Engine','ejs');
@@ -12,8 +14,9 @@
   app.use(express.static(path.join(__dirname,'public')));
 
   app.use('/admin',adminRoute);
-  app.use('/',userRoute);
+  app.use('/product',productRoute)
   app.use('/cart',cartRoute);
+  app.use('/',userRoute);
  app.listen(3000,()=>{
      console.log("server Started");
  })
