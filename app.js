@@ -2,6 +2,7 @@
  const app = express();
  const session = require("express-session");
  const adminRoute = require('./routes/admin.route')
+ const categoryRoute = require("./routes/category.router");
  const userRoute = require('./routes/user.route')
  const cartRoute = require('./routes/cart.route')
  const bodyParser = require('body-parser'); 
@@ -17,6 +18,8 @@
   })
   );
   app.use('/admin',adminRoute);
+  app.use("/category", categoryRoute);
+
   app.use('/',userRoute);
   app.use('/cart',cartRoute);
 
