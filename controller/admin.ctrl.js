@@ -5,16 +5,16 @@ exports.adminLoginPage = (req, res) => {
 };
 
 exports.adminHomePage=(req,res)=>{
-    res.render("./Admin-Pages/admin-home.ejs");
+    res.render("../Views/Admin-Pages/admin-home.ejs");
 }
 
 exports.viewCategory=(req,res)=>{
-    res.render("./Admin-Pages/view-category.ejs");
+    res.render("../Views/Admin-Pages/view-category.ejs");
 }
 
 
 exports.addProduct=(req,res)=>{
-  res.render("./Admin-Pages/add-product.ejs");
+  res.render("../Views/Admin-Pages/add-product.ejs");
 }
 
 exports.viewProductList=(req,res)=>{
@@ -22,6 +22,6 @@ exports.viewProductList=(req,res)=>{
 }
 
 exports.editProduct=(req,res)=>{
-  res.render("./Admin-Pages/edit-product.ejs");
+  res.render("../Views/Admin-Pages/edit-product.ejs");
 }
 

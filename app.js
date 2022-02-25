@@ -14,7 +14,8 @@
   app.use('/admin',adminRoute);
   app.use('/',userRoute);
   app.use('/cart',cartRoute);
- app.listen(3333,()=>{
+ app.listen(3000,()=>{
      console.log("server Started");
  })
 
+//jaya
