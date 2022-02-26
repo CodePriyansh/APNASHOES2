@@ -148,8 +148,46 @@
 <p>The total amount of (including VAT)</p>
 <p>Rs.<span id="total_cart_amt">0.00</span></p>
 </div>
-<button class="btn btn-primary text-uppercase">Checkout</button>
+<a data-toggle="modal" data-target="#exampleModal"><button  class="btn btn-primary text-uppercase">Checkout</button></a>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Adress</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <b> Mobile : </b> <input type="text"> 
+        <div class="form-group mt-5">
+            <label for="my-textarea"><b>Enter Address</label>
+            <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- discount code part -->
 <!-- <div class="discount_code mt-3 shadow">
 <div class="card">
@@ -169,16 +207,6 @@ Add a discount code (optional)
 </div>
 </div> -->
 
-
-
-
-<!-- discount code ends -->
-<div class="mt-3 shadow p-3 bg-white">
-<div class="pt-4">
-<h5 class="mb-4">Expected delivery date</h5>
-<p>July 27th 2020 - July 29th 2020</p>
-</div>
-</div>
 </div>
 </div>
 </div>

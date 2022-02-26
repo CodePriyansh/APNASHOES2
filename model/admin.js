@@ -4,6 +4,9 @@ module.exports = class Admin {
     this.email = email;
     this.password = password;
   }
+
+
+
   checkAdmin() {
     return new Promise((resolve, reject) => {
       pool.getConnection((err, databaseConnection) => {
@@ -24,4 +27,49 @@ module.exports = class Admin {
       });
     });
   }
+
+
+  seeUsers() {
+    return new Promise((resolve, reject) => {
+      pool.getConnection((err, databaseConnection) => {
+        if (err) {
+          reject(err);
+        } else {
+          let sql = "select * from user";
+          databaseConnection.query(
+            sql,
+            [],
+            (err, queryResult) => {
+              //   console.log(err);
+              err ? reject(err) : resolve(queryResult);
+            }
+          );
+          databaseConnection.release();
+        }
+      });
+    });
+  }
+
+
+  seeQuery() {
+    return new Promise((resolve, reject) => {
+      pool.getConnection((err, databaseConnection) => {
+        if (err) {
+          reject(err);
+        } else {
+          let sql = "select * from user_query";
+          databaseConnection.query(
+            sql,
+            [],
+            (err, queryResult) => {
+              //   console.log(err);
+              err ? reject(err) : resolve(queryResult);
+            }
+          );
+          databaseConnection.release();
+        }
+      });
+    });
+  }
+
 };

@@ -1,4 +1,5 @@
 const User = require('../model/user');
+const Mail = require('../model/mail');
 
 exports.userHomePage = (req, res) => {
   res.render("../Views/user-pages/user-home.ejs");
@@ -6,6 +7,27 @@ exports.userHomePage = (req, res) => {
 
 exports.userProductsPage = (req, res) => {
   res.render("../Views/user-pages/products.ejs");
+}
+
+exports.sendMail = (req, res) => {
+
+
+  let mail  = new Mail();
+  mail.name = req.body.firstname;
+  mail.email = req.body.email;
+  mail.message = req.body.subject;
+
+  console.log(mail.name + "  " + mail.message  + " " + mail.email)
+
+mail.save().then((results)=>{
+     
+           res.send("Successfully");
+   
+}).catch((err)=>{
+  console.log("codnt save");
+})
+           
+           
 }
 
 exports.userLoginPage = (req, res) => {
@@ -26,7 +48,7 @@ exports.userLoginPost = (request, response, next) => {
       console.log(results.length);
       if (results.length > 0) {
         response.render("../Views/user-pages/user-home.ejs");
-        response.send("Done")
+        // response.send("Done")
         console.log("login success...");
       }
       else

@@ -76,6 +76,33 @@ exports.editProduct = (req, res) => {
 exports.adminHomePage = (req, res) => {
   res.render("./Admin-Pages/admin-home.ejs");
 };
+
+
+exports.seeUsers = (req, res) => {
+ 
+     let admin = new Admin();
+
+     admin.seeUsers().then((results)=>{
+        console.log(results);
+      res.render("./Admin-Pages/seeUsers.ejs",{
+        Users:results
+      })
+     })
+
+};
+
+exports.seeQueries = (req, res) => {
+ 
+  let admin = new Admin();
+
+  admin.seeQuery().then((results)=>{
+     console.log(results);
+   res.render("./Admin-Pages/seeQueries.ejs",{
+     Users:results
+   })
+  })
+
+};
 exports.signout = (request, response, next) => {
   request.session.current_user = null;
   request.session.destroy();

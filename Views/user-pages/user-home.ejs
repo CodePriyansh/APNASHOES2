@@ -305,29 +305,34 @@ input[type=submit]:hover {
       <div class="column">
         <img class="shop" src="css/user-style/images/rajwada.jpg" >
         <h5  class="add">
-            SHOP ADDRESS :- rajwada 420 gali 
+            SHOP ADDRESS :- 
         </h5>
       </div>
       <div class="column">
-        <form action="/action_page.php">
+        <form action="/sendQuery"  method="post">
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name..">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-          <label for="lname">Mobile</label>
+          
   
-           <input type="text" placeholder="Mobile" required>
           <label for="lname">Email</label>
   
-           <input type="text" placeholder="Email" required>
+           <input type="text" id="email"  name= "email" placeholder="Email" required>
           <label for="subject">Subject</label>
           <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-          <input type="submit" value="Submit">
+          <button  onclick ="myfun()" type="submit" class="btn btn-success"  >SUBMIT</button>
         </form>
       </div>
     </div>
   </div>
+   <script>
+       function myfun(){
 
+        document.getElementById('fname').innerHTML = "";
+        document.getElementById('email').innerHTML = "";
+        document.getElementById('subject').innerHTML = "";
+         alert("success")
+       }
+   </script>
     <%- include('../partial/user-footer.ejs') %>
 
     </div>

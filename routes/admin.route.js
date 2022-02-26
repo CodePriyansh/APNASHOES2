@@ -8,6 +8,8 @@ router.post("/login", control.adminLoginPost);
 router.get("/add-product", control.addProduct);
 router.get("/product-list", control.viewProductList);
 router.get("/edit-product", control.editProduct);
+router.get("/registeredUsers", control.seeUsers);
+router.get("/user-queries", control.seeQueries);
 
 router.get("/signout", auth.isAuth, control.signout);
 module.exports = router;

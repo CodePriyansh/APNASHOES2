@@ -5,6 +5,7 @@ module.exports = class User {
     this.email = email;
     this.number = number;
     this.password = password;
+    
   }
   checkUser() {
     return new Promise((resolve, reject) => {
@@ -30,7 +31,7 @@ module.exports = class User {
       pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
-          let sql = "insert into user(name,email,number,password) values(?,?,?,?)";
+          let sql = "insert into user(name,email,number,password,date) values(?,?,?,curdate())";
           con.query(sql, [this.name, this.email, this.number, this.password], (err, result) => {
             con.release();
             if (err) reject(err);
