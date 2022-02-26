@@ -12,10 +12,10 @@ router.post('/user-register',control.userRegisterPost);
 router.get("/signout",control.signout);
 router.post("/sendQuery",control.sendMail);
 
-router.get('/MensSection',control.userProductsPage);
-router.get('/WomenSection',control.userProductsPage);
-router.get('/KidsSection',control.userProductsPage);
-router.get('/NewArrival',control.newArrivalPage);
+router.get('/MensSection',control.MensProductsPage);
+router.get('/WomenSection',control.WomenProductsPage);
+router.get('/KidsSection',control.KidsProductsPage);
+router.get('/NewArrival',control.NewProductsPage);
 
 
 module.exports = router;

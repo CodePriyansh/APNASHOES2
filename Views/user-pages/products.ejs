@@ -31,14 +31,17 @@
 
         <div class="row mb-5">
           <div class="col-md-9 order-2">
-
             
             <div class="row mb-5">
-
+              <%
+              for (mens of MensProducts)
+               {
+                 %>
+               
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Images\admin-img\nike5.jpeg"  alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="Productimages\<%=mens.frontViewImage%>"  alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-1">
                     <h3><a href="#">NIKE</a></h3>
@@ -49,78 +52,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Images\admin-img\nike6.jpeg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-1">
-                    <h3><a href="#">NIKE</a></h3>
-                    <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold">4999 rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;"> add to cart</button>
-                    <button class="btn btn-group-toggle">add to wishlist</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Images\admin-img\nike4.jpg" style="height:315px;" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-1">
-                    <h3><a href="#">NIKE</a></h3>
-                    <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold">4999 rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;">add to cart</button>
-                    <button class="btn btn-group-toggle">add to wishlist</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Images\admin-img\nikeG2.jpeg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-1">
-                    <h3><a href="#">NIKE</a></h3>
-                    <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold">4999 rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;">add to cart</button>
-                    <button class="btn btn-group-toggle">add to wishlist</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Images\admin-img\kids1.jpeg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-1">
-                    <h3><a href="#">NIKE</a></h3>
-                    <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold">4999 rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;">add to cart</button>
-                    <button class="btn btn-group-toggle">add to wishlist</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="#"><img src="Images\admin-img\kids2.jpeg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-1">
-                    <h3><a href="#">NIKE</a></h3>
-                    <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold">4999 rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;">add to cart</button>
-                    <button class="btn btn-group-toggle">add to wishlist</button>
-                  </div>
-                </div>
-              </div>
+            <%}%>
           </div>
 
           
