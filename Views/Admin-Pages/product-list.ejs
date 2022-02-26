@@ -126,12 +126,27 @@ h4 {
     <body>
         <h3 style="text-align: center;">Product of Category</h3>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <a href="/product/product-list"> see all</a>
+                    <%for(category of categoryList){%>   
+                        
+                    <div class="col-2">
+                        
+            <a href="/product/product--list/<%=category.id%>" name="category_id" value="<%=category.id%>"><%=category.name%></a>
+                    </div>
+                    <%}%> 
+
+                </div>
+            
+</div>
+            </div>
+
       <div class="container-fluid" style="display: flex; justify-content: flex-start; height: 80vh; ">
         <%- include('../partial/admin-sidebar.ejs')%>
         
-
-        
-        <div class="container">
+       <div class="container">
             <div class="row">
               <div class="col-12">
                   <table class="table table-image">
