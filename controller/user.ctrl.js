@@ -1,22 +1,35 @@
 const User = require('../model/user');
 const Mail = require('../model/mail');
+<<<<<<< HEAD
 const nodemailer = require('nodemailer')
+=======
+const { request, response } = require('express');
+>>>>>>> e49cd44f2864fde7cc5779a17c4e551b2175d4f4
 
 exports.userHomePage = (req, res) => {
   res.render("../Views/user-pages/user-home.ejs");
 }
 
-exports.userProductsPage = (req, res) => {
-  res.render("../Views/user-pages/products.ejs");
-}
+// exports.userProductsPage = (req, res) => {
+//   res.render("../Views/user-pages/products.ejs");
+// }
 
 exports.sendMail = (req, res) => {
+<<<<<<< HEAD
 
 
  let mail = new Mail();
  mail.email = req.body.email
  mail.name = req.body.firstname
  mail.message = req.body.subject
+=======
+  let mail  = new Mail();
+  mail.name = req.body.firstname;
+  mail.email = req.body.email;
+  mail.message = req.body.subject;
+
+  console.log(mail.name + "  " + mail.message  + " " + mail.email)
+>>>>>>> e49cd44f2864fde7cc5779a17c4e551b2175d4f4
 mail.save().then((results)=>{
 
  
@@ -96,9 +109,9 @@ exports.userLoginPost = (request, response, next) => {
     });
 };
 
-exports.newArrivalPage = (req, res) => {
-  res.render("../Views/user-pages/newArrival.ejs");
-}
+// exports.newArrivalPage = (req, res) => {
+//   res.render("../Views/user-pages/newArrival.ejs");
+// }
 
 
 exports.userRegisterPage = (req, res) => {
@@ -127,3 +140,59 @@ exports.signout = (request,response,next)=>{
   request.session.destroy();
   response.redirect("/");
 }
+
+exports.MensProductsPage = (request, response, next) => {
+  let user = new User();
+  User.fatchAllMens()
+    .then((results) => {
+      response.render("../Views/user-pages/products.ejs", {
+      MensProducts: results,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.WomenProductsPage=(request,response,next)=>{
+
+  let user =new User();
+  User.fetchAllWomens()
+  .then(results=>{
+    response.render("../Views/user-pages/products_Women.ejs",{
+      WomensProducts:results,
+    });
+  })
+  .catch(err=>{
+    console.log(err);
+    });
+  }
+
+  exports.KidsProductsPage=(request,response,next)=>{
+
+    let user =new User();
+    User.fetchAllKids()
+    .then(results=>{
+      response.render("../Views/user-pages/products_Kids.ejs",{
+        KidsProducts:results,
+      });
+    })
+    .catch(err=>{
+      console.log(err);
+      });
+    }
+
+    exports.NewProductsPage=(request,response,next)=>{
+
+      let user =new User();
+      User.fetchAllNew()
+      .then(results=>{
+        response.render("../Views/user-pages/newArrival.ejs",{
+          NewProducts:results,
+        });
+      })
+      .catch(err=>{
+        console.log(err);
+        });
+      }
+
