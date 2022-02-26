@@ -78,6 +78,10 @@ exports.adminHomePage = (req, res) => {
 };
 
 
+exports.mailProcess = (req, res) => {
+  res.render("./Admin-Pages/mailprocess.ejs");
+};
+
 exports.seeUsers = (req, res) => {
  
      let admin = new Admin();
@@ -101,7 +105,6 @@ exports.seeQueries = (req, res) => {
      Users:results
    })
   })
-
 };
 exports.signout = (request, response, next) => {
   request.session.current_user = null;
