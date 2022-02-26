@@ -10,7 +10,8 @@ router.get("/product-list", control.viewProductList);
 router.get("/edit-product", control.editProduct);
 router.get("/registeredUsers", control.seeUsers);
 router.get("/user-queries", control.seeQueries);
-router.get("/mailProcess", control.mailProcess);
+router.get("/mailProcess/:id", control.mailProcess);
+router.post("/sendMail/:id", control.sendMail);
 
 router.get("/signout", auth.isAuth, control.signout);
 module.exports = router;

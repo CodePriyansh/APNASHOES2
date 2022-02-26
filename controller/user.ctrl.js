@@ -1,5 +1,6 @@
 const User = require('../model/user');
 const Mail = require('../model/mail');
+const nodemailer = require('nodemailer')
 
 exports.userHomePage = (req, res) => {
   res.render("../Views/user-pages/user-home.ejs");
@@ -12,20 +13,57 @@ exports.userProductsPage = (req, res) => {
 exports.sendMail = (req, res) => {
 
 
-  let mail  = new Mail();
-  mail.name = req.body.firstname;
-  mail.email = req.body.email;
-  mail.message = req.body.subject;
-
-  console.log(mail.name + "  " + mail.message  + " " + mail.email)
-
+ let mail = new Mail();
+ mail.email = req.body.email
+ mail.name = req.body.firstname
+ mail.message = req.body.subject
 mail.save().then((results)=>{
+
+ 
+    console.log( results);
+    console.log( req.body.email);
+    console.log( req.body.subject);
+    console.log( req.body.firstname);
+ 
+
+    var mailOpts, smtpConfig;
+
+       var email = req.body.email;
+       var subjects =req.body.subject;
+
+
+    smtpConfig = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: "pathakpriyanshu44@gmail.com",
+            pass: "pppppAa786@"
+    }
+        
+    });
+    mailOpts = {
+        from:"pathakpriyanshu44@gmail.com",
+        to: email,
+        subject: subjects,
+        text: "thank you for share your thought we will work on it"
+    };
+    smtpConfig.sendMail(mailOpts, function(error, response) {
+        //Email not sent
+        if (error) {
+            console.log(error)
+            res.end("Email send failed");
+           
+        }//Yay!! Email sent
+        else {
+            res.end("Email send successfully");
+           
+        }
+    });
+  }).catch((err)=>{
+      console.log(err)
+  })
      
-           res.send("Successfully");
    
-}).catch((err)=>{
-  console.log("codnt save");
-})
+
            
            
 }

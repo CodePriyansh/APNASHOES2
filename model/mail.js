@@ -26,7 +26,24 @@ const pool = require('../Database/dbconfig');
             })
         })
     }
-
+ 
+    getQuerybyId(id){
+        return new Promise((resolve,reject)=>{
+          pool.getConnection((err,con)=>{
+            if(!err){
+              let sql = "select * from user_query where id=?";
+              con.query(sql,[id*1],(err,result)=>{
+                con.release();
+                err ? reject(err) : resolve(result);
+              });            
+            }
+            else
+              reject(err);
+          });        
+        });
+  
+      }
+     
     
 
 

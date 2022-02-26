@@ -141,10 +141,10 @@
               <tr>
                 <td scope="row"><%=s++ %></th>
                 <td><%=user.name%></td>
-                <td><%=user.email%></td>
+                <td id="email"><%=user.email%></td>
                 <td><%=user.subject%></td>
                 <td><%=user.date%></td>
-                <td><a href="/admin/mailProcess"><button class="btn btn-danger">Send Mail</button></a></td>
+                <td><a href="/admin/mailProcess/<%=user.id%>"><button class="btn btn-danger">Send Mail</button></a></td>
 
               </tr>
           <% } %>
@@ -152,5 +152,14 @@
             </tbody>
           </table>
     </div>
+
+    <script>
+        function myFun(){
+           let val =  document.getElementById('email').value
+
+           console.log(val);
+        }
+    </script>
+
 </body>
 </html>
