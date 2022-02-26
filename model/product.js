@@ -90,6 +90,22 @@ module.exports = class product{
           });        
         });
      }
+
+     static fatchAllById(id){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+              if(!err){
+                let sql = "select * from product where isDeleted='false' and category_id=?";
+                con.query(sql,[id*1],(err,results)=>{
+                  con.release();
+                  err ? reject(err) : resolve(results);
+                });            
+              }
+              else
+                reject(err);
+            });        
+          });
+     }
     
  static delete(id){
   return new Promise((resolve,reject)=>{
