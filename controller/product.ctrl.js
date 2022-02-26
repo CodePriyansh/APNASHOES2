@@ -1,5 +1,6 @@
-const Category = require('../model/category');
+const Category = require("../model/category");
 const path = require("path");
+
 const { render } = require('express/lib/response');
 const { request } = require('http');
 const Product = require('../model/product')
@@ -67,21 +68,39 @@ exports.editProductPost = (request, response) => {
 }
 
 
-exports.addProductPage = (request, response, next) => {
-    Category.fetchAll()
-        .then(results => {
-            console.log(results);
-            return response.render("../Views/Admin-Pages/add-product.ejs", {
-                categories: results
-            });
+exports.editProductPost = (request, response) => {
+  let product = new Product();
+  const id = request.params.id;
+  console.log(id);
+  console.log("req body " + request.body);
+  product.name = request.body.name;
+  product.quantity = request.body.quantity;
+  product.price = request.body.price;
+  product.description = request.body.description;
+  product
+    .update(id)
+    .then((result) => {
+      response.redirect("../Views/product/product-list");
+    })
+    .catch();
+};
 
-        })
-        .catch(err => {
-            console.log(err);
-            return response.send("Erro.....");
-        });
+exports.addProductPage = (request, response, next) => {
+  Category.fetchAll()
+    .then((results) => {
+      console.log(results);
+      return response.render("../Views/Admin-Pages/add-product.ejs", {
+        categories: results,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return response.send("Erro.....");
+    });
 };
 exports.productListPage = (request, response, next) => {
+
+
     let product = new Product();
     Product.fatchAll()
         .then(results => {
@@ -140,3 +159,4 @@ exports.productByCategoryId =(request,response,next)=>{
         return response.send("Error.....");
     });
 }
+

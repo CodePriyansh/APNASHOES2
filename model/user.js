@@ -42,4 +42,70 @@ module.exports = class User {
       });
     });
   }
+
+
+static fatchAllMens(){
+  return new Promise((resolve,reject)=>{
+    pool.getConnection((err,con)=>{
+      if(!err){
+        let sql = "select name,price,frontViewImage from product where category_id=30";
+        con.query(sql,(err,results)=>{
+          con.release();
+          err ? reject(err) : resolve(results);
+        });            
+      }
+      else
+        reject(err);
+    });        
+  });
 }
+
+static fetchAllWomens(){
+return new Promise((resolve,reject)=>{
+  pool.getConnection((err,con)=>{
+    if(!err){
+      let sql = "select name,price,frontViewImage from product where category_id=31";
+      con.query(sql,(err,results)=>{
+        con.release();
+        err ? reject(err) : resolve(results);
+      });            
+    }
+    else
+      reject(err);
+  });        
+});
+}
+
+static fetchAllKids(){
+  return new Promise((resolve,reject)=>{
+    pool.getConnection((err,con)=>{
+      if(!err){
+        let sql = "select name,price,frontViewImage from product where category_id=32";
+        con.query(sql,(err,results)=>{
+          con.release();
+          err ? reject(err) : resolve(results);
+        });            
+      }
+      else
+        reject(err);
+    });        
+  });
+  }
+
+  static fetchAllNew(){
+    return new Promise((resolve,reject)=>{
+      pool.getConnection((err,con)=>{
+        if(!err){
+          let sql = "select name,price,frontViewImage from product where category_id=33";
+          con.query(sql,(err,results)=>{
+            con.release();
+            err ? reject(err) : resolve(results);
+          });            
+        }
+        else
+          reject(err);
+      });        
+    });
+    }
+}
+

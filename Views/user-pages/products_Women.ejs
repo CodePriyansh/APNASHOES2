@@ -28,34 +28,34 @@
 
     <div class="site-section">
       <div class="container">
-              
-        <div class="row mb-5">  
-          <div class="col-md-9 order-2">
-        
-            
-            <div class="row mb-5">
-              <%
-              for (New of NewProducts)
-               {
-                 %>
-               
 
+        <div class="row mb-5">
+          <div class="col-md-9 order-2">
+             
+              
+            <div class="row mb-5">
+                <%
+                for (womens of WomensProducts)
+                 {
+                   %>
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="Productimages\<%=New.frontViewImage%>" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="Productimages\<%=womens.frontViewImage%>"  alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-1">
-                    <h3><a href="#"><%=New.name%></a></h3>
+                    <h3><a href="#"><%=womens.name%></a></h3>
                     <p class="mb-0"> perfect shoes </p>
-                    <p class="text-primary font-weight-bold"><%=New.price%> rs</p>
-                    <button class="btn btn-primary" style="background-color:#E60000;">add to cart</button>
+                    <p class="text-primary font-weight-bold"><%=womens.price%> rs</p>
+                    <a href="/cart/cartPage"><button class="btn btn-primary" style="background-color:#E60000;">add to cart</button></a>
                     <button class="btn btn-group-toggle">add to wishlist</button>
                   </div>
                 </div>
               </div>
-              
-          <%}%>
+            <%}%>
+          </div>
+
+          
       </div>
     </div>
 
