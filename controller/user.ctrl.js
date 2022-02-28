@@ -1,15 +1,16 @@
 const User = require('../model/user');
+const Category = require('../model/category');
+const Product = require('../model/product');
+const { request } = require('express');
 
-exports.userHomePage = (req, res) => {
-  res.render("../Views/user-pages/user-home.ejs");
+
+
+exports.userProductsPage = (request, response) => {
+  response.render("../Views/user-pages/products.ejs");
 }
 
-exports.userProductsPage = (req, res) => {
-  res.render("../Views/user-pages/products.ejs");
-}
-
-exports.userLoginPage = (req, res) => {
-  res.render("../Views/user-pages/user-login.ejs",
+exports.userLoginPage = (request, response) => {
+  response.render("../Views/user-pages/user-login.ejs",
     {
       title: "UserLogin"
     });
@@ -25,9 +26,21 @@ exports.userLoginPost = (request, response, next) => {
       console.log(results);
       console.log(results.length);
       if (results.length > 0) {
-        response.render("../Views/user-pages/user-home.ejs");
-        response.send("Done")
-        console.log("login success...");
+        request.session.current_user_id = results[0].id;
+        Promise.all([Category.fetchAll(),Product.fatchAll(request.session.current_user_id)])
+        .then(results=>{
+            return response.render("../Views/user-pages/user-home.ejs",{
+                title: "Home",
+                categoryList: results[0],
+                productList: results[1],
+                isLoggedIn: request.session.current_user_id
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+            return response.send("Error.....");
+        });
+    
       }
       else
         console.log("Login Failed...");
@@ -48,18 +61,23 @@ exports.userRegisterPage = (req, res) => {
 }
 
 exports.userRegisterPost = (request, response, next) => {
-  const name = request.body.name;
-  const email = request.body.email;
-  const number = request.body.number;
-  const password = request.body.password;
-  let user = new User(name, email, number, password);
+  let user = new User();
+  user.name = request.body.name;
+  user.email = request.body.email;
+  user.mobile = request.body.mobile;
+  user.password = request.body.password;
   user.registerSave()
     .then(result => {
+      User.getCurrentUser(user.email)
+      .then(results=>{
+      request.session.current_user_id=results[0].id;
       response.redirect("/");
-    }).catch(err => {
-      console.log(err);
-      response.send("registration failed..");
-    });
+    }).catch();
+  })
+  .catch(err=>{
+    console.log(err);
+    return response.send("Error....");    
+  });
 };
 
 exports.signout = (request,response,next)=>{
@@ -67,3 +85,23 @@ exports.signout = (request,response,next)=>{
   request.session.destroy();
   response.redirect("/");
 }
+
+exports.userHomePage = (request,response,next)=>{
+  let current_user_id = request.session.current_user_id;
+  Promise.all([Category.fetchAll(),Product.fatchAll(current_user_id)])
+  .then(results=>{
+      return response.render("../Views/user-pages/user-home.ejs",{
+          title: "Home",
+          categoryList: results[0],
+          productList: results[1],
+          isLoggedIn: request.session.current_user_id
+      });
+  })
+  .catch(err=>{
+      console.log(err);
+      return response.send("Error.....");
+  });
+  
+}
+
+

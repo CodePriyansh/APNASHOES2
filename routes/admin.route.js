@@ -5,7 +5,7 @@ const control = require("../controller/admin.ctrl");
 router.get("/", control.adminLoginPage);
 router.get("/home", control.adminHomePage);
 router.post("/login", control.adminLoginPost);
-router.get("/add-product", control.addProduct);
+//router.get("/add-product", control.addProduct);
 router.get("/product-list", control.viewProductList);
 router.get("/edit-product", control.editProduct);
 

@@ -8,7 +8,9 @@ exports.addCategory = (request, response, next) => {
   category
     .save()
     .then((result) => {
-      response.render("../Views/Admin-Pages/admin-home.ejs");
+      response.render("../Views/Admin-Pages/admin-home.ejs",{
+       categoryList : result
+      });
     })
     .catch((err) => {
       response.send("Error.......");
@@ -19,7 +21,7 @@ exports.categoryList = (request, response, next) => {
   Category.fetchAll()
     .then((results) => {
       response.render("../Views/Admin-Pages/view-category.ejs", {
-        categoryList: results,
+        categoryList: results
       });
     })
     .catch((err) => {

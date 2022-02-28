@@ -61,9 +61,9 @@ exports.viewCategory = (req, res) => {
   res.render("../Views/Admin-Pages/view-category.ejs");
 };
 
-exports.addProduct = (req, res) => {
-  res.render("../Views/Admin-Pages/add-product.ejs");
-};
+// exports.addProduct = (req, res) => {
+//   res.render("../Views/Admin-Pages/add-product.ejs");
+// };
 
 exports.viewProductList = (req, res) => {
   res.render("../Views/Admin-Pages/product-list.ejs");

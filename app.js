@@ -1,6 +1,7 @@
  const express = require("express");
+ const session = require('express-session');
  const app = express();
- const session = require("express-session");
+ 
  const adminRoute = require('./routes/admin.route')
  const categoryRoute = require("./routes/category.router");
  const userRoute = require('./routes/user.route')
@@ -16,12 +17,13 @@
   app.use(express.static(path.join(__dirname,'public')));
   app.use(
       session({
-      secret : "abcde"
-  })
-  );
+      secret : "abcde",
+      saveUninitialized :true,
+      resave:false
+  }));
   app.use('/admin',adminRoute);
 
-//   app.use('/product',productRoute);
+  app.use('/product',productRoute);
  
  
 
@@ -29,6 +31,7 @@
 
   app.use('/',userRoute);
   app.use('/cart',cartRoute);
+
 
  app.listen(3000,()=>{
      console.log("server Started");
