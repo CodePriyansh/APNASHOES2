@@ -251,15 +251,17 @@ input[type=submit]:hover {
           <div class="row">
             <div class="col-md-12">
               <div class="nonloop-block-3 owl-carousel">
+                <%for(freatur of Feature){%>
+
                 <div class="item">
                   <div class="block-4 text-center">
                     <figure class="block-4-image">
-                      <img src="css/user-style/images/girl1.jpg" alt="Image placeholder" class="img-fluid" style="max-height: 350px;">
+                      <img src="Productimages/<%=freatur.frontViewImage%>" alt="Image placeholder" class="img-fluid" style="max-height: 350px;">
                     </figure>
                     <div class="block-4-text p-2">
-                      <h3><a href="#">Nike</a></h3>
+                      <h3><a href="#"><%=freatur.name%></a></h3>
                       <p class="mb-0">BEST SELLER</p>
-                      <p class="text-primary2 font-weight-bold">899rs</p>
+                      <p class="text-primary2 font-weight-bold"><%=freatur.price%> rs</p>
                       <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
                         autocomplete="on">
                         Add To Cart
@@ -267,77 +269,16 @@ input[type=submit]:hover {
                     </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="block-4 text-center">
-                    <figure class="block-4-image">
-                      <img src="css/user-style/images/girl2.jpg" alt="Image placeholder"  style="max-height: 350px;" class="img">
-                    </figure>
-                    <div class="block-4-text p-2">
-                      <h3><a href="#">HEELS</a></h3>
-                      <p class="mb-0">BEST SELLER</p>
-                      <p class="text-primary2 font-weight-bold">999rs</p>
-                      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                        autocomplete="off">
-                        Add To Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="block-4 text-center">
-                    <figure class="block-4-image">
-                      <img src="css/user-style/images/jordan1.jpg" style="max-height: 350px;" alt="Image placeholder" class="img-fluid">
-                    </figure>
-                    <div class="block-4-text p-2">
-                      <h3><a href="#">JORDAN</a></h3>
-                      <p class="mb-0">BEST SELLER</p>
-                      <p class="text-primary2 font-weight-bold">1000rs</p>
-                      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                        autocomplete="off">
-                        Add To Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="block-4 text-center">
-                    <figure class="block-4-image">
-                      <img src="css/user-style/images/jordan2.jpg"  style="max-height: 350px;" alt="Image placeholder" class="img-fluid">
-                    </figure>
-                    <div class="block-4-text p-2">
-                      <h3><a href="#">JORDAN</a></h3>
-                      <p class="mb-0">BEST SELLER</p>
-                      <p class="text-primary2 font-weight-bold">699rs</p>
-                      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                        autocomplete="off">
-                        Add To Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="block-4 text-center">
-                    <figure class="block-4-image">
-                      <img src="css/user-style/images/kids1.jpg"  style="max-height: 350px;" alt="Image placeholder" class="img-fluid">
-                    </figure>
-                    <div class="block-4-text p-2">
-                      <h3><a href="#">puma</a></h3>
-                      <p class="mb-0">BEST SELLER</p>
-                      <p class="text-primary2 font-weight-bold">4999rs</p>
-                      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-                        autocomplete="off">
-                        Add To Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <%}%>
+
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      
+     </div> 
 
 
 

@@ -107,5 +107,20 @@ static fetchAllKids(){
       });        
     });
     }
+    static fetchAllFeatureProduct(){
+      return new Promise((resolve,reject)=>{
+        pool.getConnection((err,con)=>{
+          if(!err){
+            let sql = "select name,price,frontViewImage from product  where category_id=35";
+            con.query(sql,(err,results)=>{
+              con.release();
+              err ? reject(err) : resolve(results);
+            })
+          }
+          else
+          reject(err);
+        })
+      })
+    }
 }
 
