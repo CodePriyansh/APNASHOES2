@@ -116,7 +116,7 @@ a:hover {
   }
 }
 .site-section.site-section-sm {
-  padding: 4em 0;
+  padding: 6em 0;
 }
 
 .site-section-heading {
@@ -608,11 +608,11 @@ a:hover {
   background-repeat: no-repeat;
   background-position: center center;
 }
-.site-blocks-cover,
+/* .site-blocks-cover,
 .site-blocks-cover .row {
   min-height: 600px;
   height: calc(100vh - 174px);
-}
+} */
 .site-blocks-cover h1 {
   font-size: 30px;
   font-weight: 900;

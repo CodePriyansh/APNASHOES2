@@ -1,10 +1,7 @@
 const User = require('../model/user');
 const Mail = require('../model/mail');
-<<<<<<< HEAD
 const nodemailer = require('nodemailer')
-=======
 const { request, response } = require('express');
->>>>>>> e49cd44f2864fde7cc5779a17c4e551b2175d4f4
 
 exports.userHomePage = (req, res) => {
   res.render("../Views/user-pages/user-home.ejs");
@@ -15,21 +12,14 @@ exports.userHomePage = (req, res) => {
 // }
 
 exports.sendMail = (req, res) => {
-<<<<<<< HEAD
-
 
  let mail = new Mail();
  mail.email = req.body.email
  mail.name = req.body.firstname
  mail.message = req.body.subject
-=======
-  let mail  = new Mail();
-  mail.name = req.body.firstname;
-  mail.email = req.body.email;
-  mail.message = req.body.subject;
+  
 
   console.log(mail.name + "  " + mail.message  + " " + mail.email)
->>>>>>> e49cd44f2864fde7cc5779a17c4e551b2175d4f4
 mail.save().then((results)=>{
 
  
