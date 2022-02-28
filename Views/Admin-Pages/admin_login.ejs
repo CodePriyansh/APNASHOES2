@@ -6,6 +6,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="/css/admin-style/login.css">
 </head>
+<style>
+  .error {
+     color: red;
+     font-style: italic;
+     font-size: 15px;
+     padding-left: 5px;
+   }
+
+</style>
 <body>
   <!-- partial:index.partial.html -->
   <div id="login-form-wrap">
@@ -27,7 +36,43 @@
   </div>
   <!--login-form-wrap-->
   <!-- partial -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script>
+       $(function () {
+      var $loginform = $("#login-form");
+      
+      if ($loginform.length) {
+        $loginform.validate({
+          rules: {
+            email:{
+              required:true,
+              email:true
+            },
+            password:{
+              required:true,
+              minlength:5,
+              maxlength:15
+            },
+           
+          },
+           messages: {
+            email:{
+              required:'Please enter your email',
+              email:'Please enter valid email'
+            },
+            password:{
+              required:'Please enter your password',
+              minlength:"Password must be 5 character long"
+            },
+          
+         }, submitHandler:function(form){
+           from.submit();
+         }
+        })
+      }
+    })
+ </script>
 </body>
 
 </html>
