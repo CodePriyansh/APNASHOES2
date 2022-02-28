@@ -113,6 +113,11 @@ body {font-family: Arial, Helvetica, sans-serif;
     background-position: 200% center;
   }
 }
+.error {
+      color: red;
+      font-style: italic;
+      
+    }
 </style>
 </head>
 <body>
@@ -124,7 +129,7 @@ body {font-family: Arial, Helvetica, sans-serif;
       </div>
     </div>
   </div>
-<form action="/user-register" class="main" method="post">
+<form action="/user-register" class="main" method="post" id="registerform">
   <h2 style="text-align: center;">Registration Form</h2>
   <div class="input-container">
     <i class="fa fa-user icon"></i>
@@ -143,7 +148,7 @@ body {font-family: Arial, Helvetica, sans-serif;
 
   <div class="input-container">
     <i class="fa fa-mobile icon"></i>
-    <input class="input-field" type="number" placeholder="Mobile" name="number">
+    <input class="input-field" type="text" placeholder="Mobile" name="number">
   </div>
 
   <button type="submit" class="btn">Register</button>
@@ -151,6 +156,62 @@ body {font-family: Arial, Helvetica, sans-serif;
  
   <a href="/userLogin" style="display: block; text-align: center; margin-top: 10px;">Already a member.</a>
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+  <script>
 
+    $(function () {
+      var $registerform = $("#registerform");
+      
+      $.validator.addMethod("noSpace",function(value,element){
+        return value=='' || value.trim().length !=0 
+      }, "Space are not allowed")
+
+       if ($registerform.length) {
+        $registerform.validate({
+          rules: {
+            name: {
+              required: true,
+              noSpace:true
+            },
+            email:{
+              required:true,
+              email:true
+            },
+            password:{
+              required:true,
+              minlength:5,
+              maxlength:15
+            },
+            number:{
+              required:true,
+              maxlength:10,
+              minlength:10
+            }
+          },
+           messages: {
+            name: {
+              required: 'Please enter your name',
+            },
+            email:{
+              required:'Please enter your email',
+              email:'Please enter valid email'
+            },
+            password:{
+              required:'Please enter your password',
+              minlength:"Password must be 5 character long"
+            },
+            number:{
+              required:'Please enter your mobile number',
+              number:'Number must be only 10 digits '
+            }
+         }, submitHandler:function(form){
+           from.submit();
+         }
+        })
+      }
+    })
+
+  </script>
 </body>
 </html>
