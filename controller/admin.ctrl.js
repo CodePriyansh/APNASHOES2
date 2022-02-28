@@ -54,7 +54,7 @@ exports.editProduct = (req, res) => {
 };
 
 exports.adminHomePage = (req, res) => {
-  res.render("./Admin-Pages/admin-home.ejs");
+  res.render("../Views/Admin-Pages/admin-home.ejs");
 };
 
 
@@ -64,7 +64,7 @@ exports.mailProcess = (req, res) => {
   const id = req.params.id;
    mail.getQuerybyId(id).then((results)=>{
      console.log(results)
-    res.render("./Admin-Pages/mailprocess.ejs",{
+    res.render("../Views/Admin-Pages/mailprocess.ejs",{
       queries : results
     });
    }).catch(()=>{

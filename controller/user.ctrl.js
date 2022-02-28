@@ -3,9 +3,19 @@ const Mail = require('../model/mail');
 const nodemailer = require('nodemailer')
 const { request, response } = require('express');
 
-exports.userHomePage = (req, res) => {
-  res.render("../Views/user-pages/user-home.ejs");
-}
+exports.userHomePage = (request,response,next) => {
+  let user = new User();
+  User.fetchAllFeatureProduct()
+    .then((results) => {
+      console.log(results);
+      response.render("../Views/user-pages/user-home.ejs", {
+        Feature: results
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // exports.userProductsPage = (req, res) => {
 //   res.render("../Views/user-pages/products.ejs");
