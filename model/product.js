@@ -125,6 +125,26 @@ module.exports = class product{
  }
  
 
+ static fatchAll(current_user_id){
+  return new Promise((resolve,reject)=>{
+    pool.getConnection((err,con)=>{
+      if(!err){
+        let sql ="";
+        if(current_user_id){
+         sql = "select product.id,product.name,product.quantity,product.price,product.description,product.frontViewImage,cart.product_id from product left outer join cart on product.id=cart.product_id and cart.user_id="+current_user_id;
+        }
+        else
+        sql = "select * from product";
+        con.query(sql,(err,queryResults)=>{
+          con.release();
+          err ? reject(err) : resolve(queryResults);
+        });
+      }
+      else
+        reject(err);
+    })
+  });
+}
  
 
 }

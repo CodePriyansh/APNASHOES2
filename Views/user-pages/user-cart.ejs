@@ -21,7 +21,7 @@
     integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
     crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="/css\user-style\cart.css">
-  <title>ThapaCart</title>
+  <title>Cart</title>
 </head>
 <style>
   i {
@@ -34,237 +34,140 @@
 </style>
 
 <body class="bg-light">
+
+  <script>
+    function getCartItem() {
+      $.ajax({
+        url: '/cart/get-cart-item-local',
+        success: function (result) {
+          for (index = 0; index < result.length; index++)
+            result[index].quantity = 1;
+          localStorage.setItem("item-list", JSON.stringify(result));
+        }
+      });
+    }
+    getCartItem();
+  </script>
   <%- include('../partial/user-header.ejs') %>
 
-    <div class="container-fluid">
+    <div class="container mt-4">
       <div class="row">
-        <div class="col-md-10 col-11 mx-auto">
-          <div class="row mt-5 gx-3">
-            <!-- left side div -->
-            <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
-              <div class="card p-4">
-                <h2 class="py-4 font-weight-bold">Cart (2 items)</h2>
-                <div class="row">
-                  <!-- cart images div -->
-                  <div
-                    class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-                    <img src="/Images\admin-img\nike1.jpeg" class="img-fluid" alt="cart img">
-                  </div>
-
-
-
-
-                  <!-- cart product details -->
-                  <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                    <div class="row">
-                      <!-- product name  -->
-                      <div class="col-6 card-title">
-                        <h1 class="mb-4 product_name">Blue Nike</h1>
-                        <p class="mb-2">COLOR: BLUE</p>
-                        <p class="mb-3">Best</p>
-                      </div>
-                      <!-- quantity inc dec -->
-                      <div class="col-6">
-                        <ul class="pagination justify-content-end set_quantity">
-                          <li class="page-item">
-                            <button class="page-link " onclick="decreaseNumber('textbox','itemval')">
-                              <i class="fas fa-minus"></i> </button>
-                          </li>
-                          <li class="page-item"><input type="text" name="" class="page-link" value="0" id="textbox">
-                          </li>
-                          <li class="page-item">
-                            <button class="page-link" onclick="increaseNumber('textbox','itemval')"> <i
-                                class="fas fa-plus"></i></button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- //remover move and price -->
-                    <div class="row">
-                      <div class="col-8 d-flex justify-content-between remove_wish">
-                        <p><i class="fas fa-trash-alt"></i> REMOVE ITEM</p>
-                      </div>
-                      <div class="col-4 d-flex justify-content-end price_money">
-                        <h3>Rs.<span id="itemval">0.00 </span></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <!-- 2nd cart product -->
-              <div class="card p-4">
-                <div class="row">
-                  <!-- cart images div -->
-                  <div
-                    class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-                    <img src="/Images\admin-img\nike2.jpeg" class="img-fluid" alt="cart img">
-                  </div>
-
-
-
-
-                  <!-- cart product details -->
-                  <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                    <div class="row">
-                      <!-- product name  -->
-                      <div class="col-6 card-title">
-                        <h1 class="mb-4 product_name">Nike Shoe</h1>
-                        <p class="mb-2">COLOR: Green</p>
-                        <p class="mb-3">Best</p>
-                      </div>
-                      <!-- quantity inc dec -->
-                      <div class="col-6">
-                        <ul class="pagination justify-content-end set_quantity">
-                          <li class="page-item">
-                            <button class="page-link " onclick="decreaseNumber('textbox1','itemval1')"> <i
-                                class="fas fa-minus"></i> </button>
-                          </li>
-                          <li class="page-item"><input type="text" name="" class="page-link" value="0" id="textbox1">
-                          </li>
-                          <li class="page-item">
-                            <button class="page-link" onclick="increaseNumber('textbox1','itemval1')"> <i
-                                class="fas fa-plus"></i></button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- //remover move and price -->
-                    <div class="row">
-                      <div class="col-8 d-flex justify-content-between remove_wish">
-                        <p><i class="fas fa-trash-alt"></i> REMOVE ITEM</p>
-                      </div>
-                      <div class="col-4 d-flex justify-content-end price_money">
-                        <h3>Rs.<span id="itemval1">0.00 </span> </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- right side div -->
-            <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
-              <div class="right_side p-3 shadow bg-white">
-                <h2 class="product_name mb-5">The Total Amount Of</h2>
-                <div class="price_indiv d-flex justify-content-between">
-                  <p>Product amount</p>
-                  <p>Rs.<span id="product_total_amt">0.00</span></p>
-                </div>
-                <div class="price_indiv d-flex justify-content-between">
-                  <p>Shipping Charge</p>
-                  <p>Rs.<span id="shipping_charge">50.0</span></p>
-                </div>
-                <hr />
-                <div class="total-amt d-flex justify-content-between font-weight-bold">
-                  <p>The total amount of (including VAT)</p>
-                  <p>Rs.<span id="total_cart_amt">0.00</span></p>
-                </div>
-                <a data-toggle="modal" data-target="#exampleModal"><button
-                    class="btn btn-primary text-uppercase">Checkout</button></a>
-              </div>
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Confirm Adress</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <b> Mobile : </b> <input type="text">
-                      <div class="form-group mt-5">
-                        <label for="my-textarea"><b>Enter Address</label>
-                        <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-                      <button type="button" class="btn btn-primary">Confirm</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
+        <div class="col-12">
+          <table class="table">
+            <tr>
+              <th>Image</th>
+              <th>Product-Info</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+            <tbody>
+              <%for(index=0; index<cartItemList.length; index++){%>
+                <tr>
+                  <td><img width="100px" height="100px" src="/Productimages/<%=cartItemList[index].frontViewImage%>" />
+                  </td>
+                  <td>
+                    <b>Name :</b>
+                    <%=cartItemList[index].name%>
+                      <br><b>Desc :</b>
+                      <%=cartItemList[index].description%>
+                        <br><b>In stock :</b>
+                        <%=cartItemList[index].quantity%>
+                  </td>
+                  <td>
+                    <%=cartItemList[index].price%>
+                  </td>
+                  <td>
+                    <input onchange="updateQty(this.value,'<%=cartItemList[index].price%>','<%=index%>')"
+                      style="width:60px;" type="number" min="1" max="<%=cartItemList[index].quantity%>" />
+                  </td>
+                  <td><span id="total<%=index%>"></span></td>
+                  <td>
+                   <button onclick="remove(this,'<%=isLoggedIn%>','<%=cartItemList[index].id%>')"
+                      class="btn btn-danger">REMOVE</button>
+                  </td>
+                </tr>
+                <%}%>
+            </tbody>
+          </table>
+          <div class="row justify-content-center p-5">
+            <button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Place Order</button>
           </div>
         </div>
       </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-      crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
 
-      var product_total_amt = document.getElementById('product_total_amt');
-      var shipping_charge = document.getElementById('shipping_charge');
-      var total_cart_amt = document.getElementById('total_cart_amt');
-      var discountCode = document.getElementById('discount_code1');
-      const decreaseNumber = (incdec, itemprice) => {
-        var itemval = document.getElementById(incdec);
-        var itemprice = document.getElementById(itemprice);
-        console.log(itemprice.innerHTML);
-        // console.log(itemval.value);
-        if (itemval.value <= 0) {
-          itemval.value = 0;
-          alert('Negative quantity not allowed');
-        } else {
-          itemval.value = parseInt(itemval.value) - 1;
-          itemval.style.background = '#fff';
-          itemval.style.color = '#000';
-          itemprice.innerHTML = parseInt(itemprice.innerHTML) - 15;
-          product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) - 15;
-          total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
-        }
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Address Information</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label>Address</label>
+              <textarea id="address" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Contact Number</label>
+              <input type="text" id="contact" class="form-control" />
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button onclick="placeOrder()" type="button" class="btn btn-success">Done</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function placeOrder() {
+        var address = document.getElementById("address").value;
+        var contact = document.getElementById("contact").value;
+        var itemList = localStorage.getItem("item-list");
+        $.ajax({
+          url: "/order/place-order/" + itemList + "/" + address + "/" + contact,
+          success: function (result) {
+            alert("Order Placed......");
+          }
+        });
       }
-      const increaseNumber = (incdec, itemprice) => {
-        var itemval = document.getElementById(incdec);
-        var itemprice = document.getElementById(itemprice);
-        // console.log(itemval.value);
-        if (itemval.value >= 5) {
-          itemval.value = 5;
-          alert('max 5 allowed');
-          itemval.style.background = 'red';
-          itemval.style.color = '#fff';
-        } else {
-          itemval.value = parseInt(itemval.value) + 1;
-          itemprice.innerHTML = parseInt(itemprice.innerHTML) + 15;
-          product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) + 15;
-          total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
+      function updateQty(qty, price, index) {
+        var spanObj = document.getElementById("total" + index);
+        var total = (qty * 1) * (price * 1);
+        spanObj.innerHTML = "" + total;
+        itemList = localStorage.getItem("item-list");
+        itemList = JSON.parse(itemList);
+        itemList[index].quantity = qty * 1;
+        localStorage.setItem("item-list", JSON.stringify(itemList));
+      }
+      function remove(button, isLoggedIn, pid) {
+        var buttonText=button.innerText;
+        if (buttonText == "REMOVE"){
+         
+          $.ajax({
+            url: "/cart/remove-from-cart/"+pid,
+            success: function(result) {
+              alert("Item Removed From Cart..");
+              //$('#row'+pid).remove(); 
+            }
+          });
         }
+
       }
 
-      
-      // const discount_code = () => {
-      //   let totalamtcurr = parseInt(total_cart_amt.innerHTML);
-      //   let error_trw = document.getElementById('error_trw');
-      //   if (discountCode.value === 'thapa') {
-      //     let newtotalamt = totalamtcurr - 15;
-      //     total_cart_amt.innerHTML = newtotalamt;
-      //     error_trw.innerHTML = "Hurray! code is valid";
-      //   } else {
-      //     error_trw.innerHTML = "Try Again! Valid code is thapa";
-      //   }
-      // }
+
     </script>
 </body>
 

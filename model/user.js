@@ -122,5 +122,21 @@ static fetchAllKids(){
         })
       })
     }
+
+    static getCurrentUser(email){
+      return new Promise((resolve,reject)=>{
+          pool.getConnection((err,con)=>{
+              if(!err){
+                 let sql = "select * from user where email=?";
+                 con.query(sql,[email],(err,queryResult)=>{
+                   con.release();
+                   err ? reject(err) : resolve(queryResult);
+                 });
+              }
+              else
+               reject(err);
+          })
+      });
+  }
 }
 

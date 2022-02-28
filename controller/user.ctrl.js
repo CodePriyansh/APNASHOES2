@@ -1,20 +1,25 @@
 const User = require('../model/user');
 const Mail = require('../model/mail');
 const nodemailer = require('nodemailer')
+const Category = require('../model/category');
+const Product = require('../model/product');
 const { request, response } = require('express');
 
 exports.userHomePage = (request,response,next) => {
-  let user = new User();
-  User.fetchAllFeatureProduct()
-    .then((results) => {
-      console.log(results);
-      response.render("../Views/user-pages/user-home.ejs", {
-        Feature: results
+  let current_user_id = request.session.current_user_id;
+  Promise.all([Category.fetchAll(),Product.fatchAll(current_user_id)])
+  .then(results=>{
+      return response.render("../Views/user-pages/user-home.ejs",{
+          title: "Home",
+          categoryList: results[0],
+          productList: results[1],
+          isLoggedIn: request.session.current_user_id,
       });
-    })
-    .catch((err) => {
+  })
+  .catch(err=>{
       console.log(err);
-    });
+      return response.send("Error.....");
+  }); 
 };
 
 // exports.userProductsPage = (req, res) => {
@@ -88,27 +93,22 @@ exports.userLoginPage = (req, res) => {
     });
 }
 
-exports.userLoginPost = (request, response, next) => {
+exports.userLoginPost = (request,response,next)=>{
   let user = new User();
-
   user.email = request.body.email;
   user.password = request.body.password;
-  user.checkUser()
-    .then((results) => {
-      console.log(results);
-      console.log(results.length);
-      if (results.length > 0) {
-        response.render("../Views/user-pages/user-home.ejs");
-        // response.send("Done")
-        console.log("login success...");
-      }
-      else
-        console.log("Login Failed...");
-    }).catch(err => {
+  user.checkUser().
+  then(result=>{
+     if(result.length!=0){
+         request.session.current_user_id = result[0].id;
+        return response.redirect("/"); 
+     }
+   })
+  .catch(err=>{
       console.log(err);
-    });
-};
-
+      return response.send("Erro.....");
+  });
+}
 // exports.newArrivalPage = (req, res) => {
 //   res.render("../Views/user-pages/newArrival.ejs");
 // }
@@ -121,18 +121,23 @@ exports.userRegisterPage = (req, res) => {
 }
 
 exports.userRegisterPost = (request, response, next) => {
-  const name = request.body.name;
-  const email = request.body.email;
-  const number = request.body.number;
-  const password = request.body.password;
-  let user = new User(name, email, number, password);
+  let user = new User();
+  user.name = request.body.name;
+  user.email = request.body.email;
+  user.mobile = request.body.mobile;
+  user.password = request.body.password;
   user.registerSave()
     .then(result => {
+      User.getCurrentUser(user.email)
+      .then(results=>{
+      request.session.current_user_id=results[0].id;
       response.redirect("/");
-    }).catch(err => {
-      console.log(err);
-      response.send("registration failed..");
-    });
+    }).catch();
+  })
+  .catch(err=>{
+    console.log(err);
+    return response.send("Error....");    
+  });
 };
 
 exports.signout = (request,response,next)=>{
