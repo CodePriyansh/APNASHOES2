@@ -17,12 +17,4 @@ router.get('/WomenSection',control.WomenProductsPage);
 router.get('/KidsSection',control.KidsProductsPage);
 router.get('/NewArrival',control.NewProductsPage);
 
-
-module.exports = router;
-
-
-
-
-
-
 module.exports = router;

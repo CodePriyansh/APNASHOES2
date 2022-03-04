@@ -67,7 +67,9 @@ mail.save().then((results)=>{
            
         }//Yay!! Email sent
         else {
-            res.end("Email send successfully");
+            res.render(
+              './user-pages/emailSucessfully.ejs'
+            );
            
         }
     });
@@ -127,9 +129,49 @@ exports.userRegisterPost = (request, response, next) => {
   const password = request.body.password;
   let user = new User(name, email, number, password);
   user.registerSave()
-    .then(result => {
+    .then(results => {
+ 
+       console.log(name + " " +email + " "+number+" "+password);
+
+
+      var mailOpts, smtpConfig;
+
+      console.log(results);
+        //  var email = results[0].email;
+        //  var subjects = results[0].subject;
+ 
+ 
+      smtpConfig = nodemailer.createTransport({
+          service: 'Gmail',
+          auth: {
+              user: "pathakpriyanshu44@gmail.com",
+              pass: "pppppAa786@"
+      }
+          
+      });
+      mailOpts = {
+          from:"pathakpriyanshu44@gmail.com",
+          to: email,
+          subject: "your login details",
+          text: "hiii"
+      };
+      smtpConfig.sendMail(mailOpts, function(error, response) {
+          //Email not sent
+          if (error) {
+              console.log(error)
+              response.end("Email send failed");
+             
+          }//Yay!! Email sent
+          else {
+            console.log("come")
+
+             
+          }
+      });
       response.redirect("/");
-    }).catch(err => {
+
+    })
+    .catch(err => {
       console.log(err);
       response.send("registration failed..");
     });

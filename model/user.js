@@ -31,7 +31,7 @@ module.exports = class User {
       pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
-          let sql = "insert into user(name,email,number,password,date) values(?,?,?,curdate())";
+          let sql = "insert into user(name,email,number,password,date) values(?,?,?,?,curdate())";
           con.query(sql, [this.name, this.email, this.number, this.password], (err, result) => {
             con.release();
             if (err) reject(err);
@@ -48,7 +48,7 @@ static fatchAllMens(){
   return new Promise((resolve,reject)=>{
     pool.getConnection((err,con)=>{
       if(!err){
-        let sql = "select name,price,frontViewImage from product where category_id=30";
+        let sql = "select name,price,frontViewImage from product where category_id=30 and isDeleted='false'";
         con.query(sql,(err,results)=>{
           con.release();
           err ? reject(err) : resolve(results);
@@ -64,7 +64,7 @@ static fetchAllWomens(){
 return new Promise((resolve,reject)=>{
   pool.getConnection((err,con)=>{
     if(!err){
-      let sql = "select name,price,frontViewImage from product where category_id=31";
+      let sql = "select name,price,frontViewImage from product where category_id=31 and isDeleted = 'false'";
       con.query(sql,(err,results)=>{
         con.release();
         err ? reject(err) : resolve(results);
@@ -80,7 +80,7 @@ static fetchAllKids(){
   return new Promise((resolve,reject)=>{
     pool.getConnection((err,con)=>{
       if(!err){
-        let sql = "select name,price,frontViewImage from product where category_id=32";
+        let sql = "select name,price,frontViewImage from product where category_id=32 and isDeleted = 'false'";
         con.query(sql,(err,results)=>{
           con.release();
           err ? reject(err) : resolve(results);
@@ -96,7 +96,7 @@ static fetchAllKids(){
     return new Promise((resolve,reject)=>{
       pool.getConnection((err,con)=>{
         if(!err){
-          let sql = "select name,price,frontViewImage from product where category_id=33";
+          let sql = "select name,price,frontViewImage from product where category_id=33 and isDeleted = 'false'";
           con.query(sql,(err,results)=>{
             con.release();
             err ? reject(err) : resolve(results);
@@ -111,7 +111,7 @@ static fetchAllKids(){
       return new Promise((resolve,reject)=>{
         pool.getConnection((err,con)=>{
           if(!err){
-            let sql = "select name,price,frontViewImage from product  where category_id=35";
+            let sql = "select name,price,frontViewImage from product  where category_id=35 and isDeleted = 'false'";
             con.query(sql,(err,results)=>{
               con.release();
               err ? reject(err) : resolve(results);

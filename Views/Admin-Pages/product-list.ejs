@@ -128,13 +128,15 @@ h4 {
 
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <a href="/product/product-list"> see all</a>
+                <div class="col-12" style="display:contents">
+                    <a  style="background-color:#E60000; border-radius: 5px; color: white; padding:10px;     margin-top: -10px;
+                    margin-right: auto;"
+                }   href="/product/product-list"> See All</a>
                     <%for(category of categoryList){%>   
                         
                     <div class="col-2">
                         
-            <a href="/product/product--list/<%=category.id%>" name="category_id" value="<%=category.id%>"><%=category.name%></a>
+            <a href="/product/product--list/<%=category.id%>" style="background-color:#E60000; border-radius: 5px; color: #ddd; padding:8px" name="category_id" value="<%=category.id%>"><%=category.name%></a>
                     </div>
                     <%}%> 
 
@@ -158,7 +160,6 @@ h4 {
                         <th >DESCRIPTION</th>
                         <th >QUATITY</th>
                         <th >PRICE</th>
-                        <th>Edit</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
@@ -172,12 +173,13 @@ h4 {
                         <td><%=sno++%></td>
                         <td class="w-25">
                             <img src="/Productimages/<%=product.frontViewImage%>" style="height: 220px; width: 220px;" class="img-fluid img-thumbnail" alt="Sheep">
+                            <a href="/product/edit-product/<%=product.id%>"><button class="btn btn-success mt-5" > EDIT product</button></a>
                         </td>
                         <td><%=product.name%></td>
                         <td><%=product.description%></td>
                         <td><%=product.quantity%></td>
                         <td><%=product.price%></td>
-                           <td><a href="/product/edit-product/<%=product.id%>"><button class="btn btn-success mt-5" > EDIT product</button></a></td>
+                          
                        
                        <td> <a><button onclick="deleteproduct('<%=product.id%>')" id="delete-button" class="btn btn-danger"> remove product</button></a></td>
                         
